@@ -1,6 +1,6 @@
 function getRamdomValue(min, max) {
-  const attackValue = Math.floor(Math.random() * (max - min));
-  this.monsterHealth -= attackValue;
+  attackValue = Math.floor(Math.random() * (max - min));
+  return attackValue;
 }
 
 const app = Vue.createApp({
@@ -9,6 +9,14 @@ const app = Vue.createApp({
       playerHealth: 100,
       monsterHealth: 100,
     };
+  },
+  computed: {
+    monsterBarStyles() {
+        return {width: this.monsterHealth + '%'}
+    },
+    playerBarStyles() {
+        return {width: this.playerHealth + '%'}
+    }
   },
   methods: {
     attackMonster() {
